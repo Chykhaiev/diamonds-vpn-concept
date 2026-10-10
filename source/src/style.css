@@ -244,7 +244,7 @@ ol, ul { list-style: none; }
 
 /* cta */
 .cta { position: relative; margin: clamp(96px, 12vw, 160px) auto 0; max-width: calc(var(--max) - 2 * var(--gutter)); width: calc(100% - 2 * var(--gutter)); padding: clamp(80px, 10vw, 140px) 24px; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; background: var(--raised); border: 1px solid var(--line); isolation: isolate; }
-.cta-glow { position: absolute; inset: -40%; z-index: -1; background: conic-gradient(from 0deg at 50% 50%, rgba(28,21,231,.0), rgba(28,21,231,.45), rgba(54,186,247,.35), rgba(0,215,192,.15), rgba(28,21,231,.0)); filter: blur(60px); animation: spin 14s linear infinite; }
+.cta-glow { position: absolute; inset: -40%; z-index: -1; background: conic-gradient(from 0deg at 50% 50%, rgba(28,21,231,.0), rgba(28,21,231,.45), rgba(54,186,247,.35), rgba(0,215,192,.15), rgba(28,21,231,.0)); filter: blur(60px); animation: spin 14s linear infinite; will-change: transform; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .cta-title { font-size: clamp(44px, 7vw, 108px); max-width: 12ch; }
 
@@ -328,9 +328,7 @@ main, .footer { position: relative; z-index: 1; }
 .card {
   background:
     linear-gradient(180deg, rgba(207, 244, 255, .055), rgba(207, 244, 255, 0) 38%),
-    rgba(9, 13, 34, .55);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
+    rgba(9, 13, 34, .74);
   border-color: rgba(160, 200, 255, .12);
 }
 .app-main { background: radial-gradient(120% 120% at 100% 0%, rgba(59, 75, 255, .32), transparent 55%), linear-gradient(180deg, rgba(207,244,255,.05), transparent 40%), rgba(9, 13, 34, .55); }

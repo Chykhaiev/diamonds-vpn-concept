@@ -18,7 +18,7 @@ export function initField({ reduced = false } = {}) {
   const mobile = window.innerWidth < 760;
   const N = mobile ? 1800 : 3600;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 1, 12000);
@@ -224,10 +224,19 @@ export function initField({ reduced = false } = {}) {
   for (let i = 0; i < N; i++) { SHAPES.horizon.get(i, 0, o); pos.set([o.x, o.y, o.z], i * 3); alpha[i] = o.a; col.set([tc.r, tc.g, tc.b], i * 3); }
 
   const clock = new THREE.Clock();
+  let qFrames = 0, qSlow = 0, qLow = false;
   function frame() {
     requestAnimationFrame(frame);
-    const dt = Math.min(clock.getDelta(), 0.05);
+    const rawDt = clock.getDelta();
+    const dt = Math.min(rawDt, 0.05);
     if (inHero) return;
+    if (!qLow && rawDt < 0.5) {
+      qFrames++; if (rawDt > 0.026) qSlow++;
+      if (qFrames >= 120) {
+        if (qSlow > 45 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); resize(); qLow = true; }
+        qFrames = qSlow = 0;
+      }
+    }
     t += reduced ? 0 : dt;
     const want = pickShape();
     if (want !== current) {

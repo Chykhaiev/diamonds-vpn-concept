@@ -197,7 +197,7 @@ function initNetwork(canvas) {
   let w = 0, h = 0, dpr = 1, nodes = [], visible = false;
   const mouse = { x: -999, y: -999 };
   function build() {
-    dpr = Math.min(window.devicePixelRatio, 2);
+    dpr = Math.min(window.devicePixelRatio, 1.5);
     w = card.clientWidth; h = card.clientHeight;
     canvas.width = w * dpr; canvas.height = h * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

@@ -15,7 +15,7 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
 
   const mobile = () => window.innerWidth < 760;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 1, 6000);
@@ -187,8 +187,10 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
 
     // ---- light up cards near the diamond
     const sx = pos.x + W / 2, sy = H / 2 - pos.y;
-    for (const c of cards) {
-      const r = c.getBoundingClientRect();
+    // read all rects first, then write, so the browser lays out once per frame
+    const rects = cards.map((c) => c.getBoundingClientRect());
+    cards.forEach((c, k) => {
+      const r = rects[k];
       let g = 0;
       if (r.bottom > -50 && r.top < H + 50) {
         const dx = Math.max(r.left - sx, 0, sx - r.right), dy = Math.max(r.top - sy, 0, sy - r.bottom);
@@ -199,9 +201,9 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
       const nv = lerp(prev, g, 0.15);
       if (Math.abs(nv - prev) > 0.004) { c.style.setProperty('--dg', nv.toFixed(3)); glow.set(c, nv); }
       if (g > 0.05 && c !== hoverCard) {
-        c.style.setProperty('--mx', `${sx - r.left}px`); c.style.setProperty('--my', `${sy - r.top}px`);
+        c.style.setProperty('--mx', `${Math.round(sx - r.left)}px`); c.style.setProperty('--my', `${Math.round(sy - r.top)}px`);
       }
-    }
+    });
 
     renderer.render(scene, camera);
   }

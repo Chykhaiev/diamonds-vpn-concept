@@ -52,7 +52,7 @@ export function initHero(canvas, { onReady, reducedMotion = false } = {}) {
   const R = isMobile ? 2.35 : 2.9;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
@@ -243,9 +243,19 @@ export function initHero(canvas, { onReady, reducedMotion = false } = {}) {
   }
 
   const gm = new THREE.Matrix4(), wv = new THREE.Vector3(), nrm = new THREE.Vector3();
+  // adaptive quality: if frames keep running slow, render at 1x pixel ratio
+  let qFrames = 0, qSlow = 0, qLow = false;
   function frame() {
     if (!running) return;
-    const dt = Math.min(clock.getDelta(), 0.1);
+    const rawDt = clock.getDelta();
+    const dt = Math.min(rawDt, 0.1);
+    if (!qLow && rawDt < 0.5) {
+      qFrames++; if (rawDt > 0.026) qSlow++;
+      if (qFrames >= 120) {
+        if (qSlow > 45 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); composer.setPixelRatio(1); resize(); qLow = true; }
+        qFrames = qSlow = 0;
+      }
+    }
     t += dt; window.__heroT = t;
     mouseSmooth.lerp(mouse, 0.06);
 
