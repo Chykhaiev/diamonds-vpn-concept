@@ -7,7 +7,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-spwoeRNH4i7Ud1mVMMvnHyhtdJX4AIN5HnaN5uDzXhE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self' https://*.framer.app https://*.framer.website https://framer.com https://*.framer.com; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-spwoeRNH4i7Ud1mVMMvnHyhtdJX4AIN5HnaN5uDzXhE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self' https://*.vercel.app https://*.framer.app https://*.framer.website https://framer.com https://*.framer.com; upgrade-insecure-requests"
         },
         {
           "key": "Strict-Transport-Security",
