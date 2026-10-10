@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diamonds VPN Concept</title>
+  <meta name="description" content="Concept redesign of Diamonds VPN: a VPN that lives in Telegram and is paid with TON." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Oxanium:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+
+  <header class="nav" id="top">
+    <a class="logo" href="#top" aria-label="Diamonds VPN home">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z" fill="none" stroke="url(#lg)" stroke-width="1.6" stroke-linejoin="round"/><path d="M2 9h20M9 3l3 18 3-18" fill="none" stroke="url(#lg)" stroke-width="1.1" stroke-linejoin="round" opacity=".7"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#CFF4FF"/><stop offset="1" stop-color="#3B4BFF"/></linearGradient></defs></svg>
+      <span>DIAMONDS</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#why">Why Diamonds</a>
+      <a href="#apps">Apps</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-aurora btn-sm magnetic" href="#cta"><span>Open in Telegram</span></a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow hero-eyebrow"><span class="dot"></span>VPN inside Telegram · paid in TON</p>
+        <h1 class="display hero-title">Private internet,<br />one tap away.</h1>
+        <div class="hero-bottom">
+          <p class="lead hero-lead">Diamonds runs as a Telegram Mini App. Pick a plan, pay with TON and connect — no new account, no card.</p>
+          <div class="hero-actions">
+            <a class="btn btn-aurora magnetic" href="#cta"><span>Open in Telegram</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-ghost magnetic" href="#pricing"><span>See pricing</span></a>
+          </div>
+        </div>
+      </div>
+      <button class="replay" type="button" aria-label="Replay intro animation">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Replay
+      </button>
+      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" aria-label="Key facts" data-field="horizon">
+      <span class="dia-anchor" style="left:50%;top:-10px" data-scale="1.1"></span>
+      <div class="stat"><div class="stat-num"><span data-count="5">0</span></div><p class="stat-label">VPN protocols</p></div>
+      <div class="stat"><div class="stat-num">∞</div><p class="stat-label">Devices per plan</p></div>
+      <div class="stat"><div class="stat-num"><span data-count="2">0</span></div><p class="stat-label">Taps to connect</p></div>
+      <div class="stat"><div class="stat-num"><span data-count="0">0</span></div><p class="stat-label">Location limits</p></div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <div class="route" aria-hidden="true"><span></span></div>
+    <section class="section" id="how" data-field="horizon">
+      <div class="section-head">
+        <p class="eyebrow"><span class="idx">01</span>How it works</p>
+        <h2 class="h2 split">Three steps. All of them inside Telegram.</h2>
+        <span class="dia-anchor" style="left:78%;top:55%"></span>
+      </div>
+      <ol class="steps">
+        <li class="step card spot">
+          <span class="step-n">01</span>
+          <div class="step-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3 class="h3">Open the Mini App</h3>
+          <p class="body">Start the Diamonds bot in Telegram. Your Telegram account is your login.</p>
+        </li>
+        <li class="step card spot">
+          <span class="step-n">02</span>
+          <div class="step-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 9l8 12 8-12z M4 9h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3 class="h3">Pay with TON</h3>
+          <p class="body">Choose how long you need it and confirm in your wallet. Same features in every plan.</p>
+        </li>
+        <li class="step card spot">
+          <span class="step-n">03</span>
+          <div class="step-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v8M6.3 6.3a8 8 0 1 0 11.4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3 class="h3">Tap connect</h3>
+          <p class="body">Pick a location or let the app choose. Add your other devices whenever you like.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WHY -->
+    <div class="route" aria-hidden="true"><span></span></div>
+    <section class="section" id="why" data-field="network">
+      <div class="section-head row">
+        <div>
+          <p class="eyebrow"><span class="idx">02</span>Why Diamonds</p>
+          <h2 class="h2 split">A VPN that lives where you already are.</h2>
+        </div>
+        <span class="dia-anchor" style="left:62%;top:20%" data-scale="0.9"></span>
+        <p class="lead narrow">No separate account, no card details, no device limit. The things that usually slow you down are simply not there.</p>
+      </div>
+      <div class="bento">
+        <article class="card spot bento-net">
+          <canvas class="net-canvas" aria-hidden="true"></canvas>
+          <div class="card-foot">
+            <h3 class="h3">5 protocols, one switch</h3>
+            <p class="body">If one protocol is blocked or slow on your network, switch to another in the app.</p>
+          </div>
+        </article>
+        <article class="card spot">
+          <div class="big-ico">∞</div>
+          <h3 class="h3">Unlimited devices</h3>
+          <p class="body">Phone, laptop, tablet. One plan covers all of them.</p>
+        </article>
+        <article class="card spot">
+          <div class="ton-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14l-7 15z M12 5v15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3 class="h3">Paid in TON</h3>
+          <p class="body">Pay from your Telegram wallet. No card, no billing address.</p>
+        </article>
+        <article class="card spot bento-wide">
+          <div class="locations" aria-hidden="true">
+            <span>Frankfurt</span><span>Amsterdam</span><span>Warsaw</span><span>Helsinki</span><span>New York</span><span>Tokyo</span><span>Singapore</span><span>London</span>
+          </div>
+          <div class="card-foot">
+            <h3 class="h3">No location limits</h3>
+            <p class="body">Every server is in every plan. Switch as often as you need.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- KINETIC -->
+    <section class="kinetic" aria-hidden="true" data-field="tunnel">
+      <span class="dia-anchor" style="left:50%;top:62%" data-scale="1.5"></span>
+      <div class="kinetic-row k1"><span>Private · Fast · Inside Telegram · Paid in TON · </span><span>Private · Fast · Inside Telegram · Paid in TON · </span></div>
+      <div class="kinetic-row k2"><span>No account · No card · No device limit · </span><span>No account · No card · No device limit · </span></div>
+    </section>
+
+    <!-- APPS -->
+    <div class="route" aria-hidden="true"><span></span></div>
+    <section class="section" id="apps" data-field="tunnel">
+      <div class="section-head">
+        <p class="eyebrow"><span class="idx">03</span>Apps</p>
+        <h2 class="h2 split">Start in Telegram. Add apps when you want them.</h2>
+        <span class="dia-anchor" style="left:80%;top:55%"></span>
+      </div>
+      <div class="apps">
+        <article class="card spot app-main">
+          <div class="app-copy">
+            <span class="pill">Recommended</span>
+            <h3 class="h2 small">Telegram Mini App</h3>
+            <p class="body">The fastest way in. Buy, connect and manage devices without installing anything.</p>
+            <a class="btn btn-aurora magnetic" href="#cta"><span>Open in Telegram</span></a>
+          </div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="ph-top"><span>Diamonds VPN</span><span class="ph-dot"></span></div>
+              <div class="ph-ring"><div class="ph-core"><svg viewBox="0 0 24 24"><path d="M12 3v8M6.3 6.3a8 8 0 1 0 11.4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div></div>
+              <p class="ph-status">Connected</p>
+              <p class="ph-time">00:42:17</p>
+              <div class="ph-loc"><span>Frankfurt</span><span class="ph-chev">›</span></div>
+            </div>
+          </div>
+        </article>
+        <ul class="app-list">
+          <li class="card spot app-item"><span>iOS</span><span class="arrow">↗</span></li>
+          <li class="card spot app-item"><span>Android</span><span class="arrow">↗</span></li>
+          <li class="card spot app-item"><span>Windows</span><span class="arrow">↗</span></li>
+          <li class="card spot app-item"><span>macOS</span><span class="arrow">↗</span></li>
+          <li class="card spot app-item"><span>Linux</span><span class="arrow">↗</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <div class="route" aria-hidden="true"><span></span></div>
+    <section class="section" id="pricing" data-field="diamond">
+      <div class="section-head center">
+        <p class="eyebrow"><span class="idx">04</span>Pricing</p>
+        <h2 class="h2 split">One feature set. You only choose how long.</h2>
+        <p class="lead">One-time payment in TON. Prices below are placeholders for this concept.</p>
+      </div>
+      <div class="plans">
+        <span class="dia-anchor" style="left:50%;top:-14px" data-scale="0.8"></span>
+        <article class="card spot plan">
+          <p class="plan-name">1 month</p>
+          <p class="plan-price"><span class="cur">$</span>5.99<span class="per">/mo</span></p>
+          <p class="body">Try it for a trip or a project.</p>
+          <a class="btn btn-ghost magnetic" href="#cta"><span>Choose</span></a>
+        </article>
+        <article class="card spot plan plan-best">
+          <span class="pill">Best value</span>
+          <p class="plan-name">12 months</p>
+          <p class="plan-price"><span class="cur">$</span>2.99<span class="per">/mo</span></p>
+          <p class="body">Set it once and forget about it for a year.</p>
+          <a class="btn btn-aurora magnetic" href="#cta"><span>Choose</span></a>
+        </article>
+        <article class="card spot plan">
+          <p class="plan-name">6 months</p>
+          <p class="plan-price"><span class="cur">$</span>3.99<span class="per">/mo</span></p>
+          <p class="body">A middle option with a lower monthly price.</p>
+          <a class="btn btn-ghost magnetic" href="#cta"><span>Choose</span></a>
+        </article>
+      </div>
+      <ul class="includes">
+        <li>Unlimited devices</li><li>All 5 protocols</li><li>All locations</li><li>Telegram support</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <div class="route" aria-hidden="true"><span></span></div>
+    <section class="section faq-wrap" id="faq" data-field="drift">
+      <div class="section-head">
+        <p class="eyebrow"><span class="idx">05</span>FAQ</p>
+        <h2 class="h2 split">Questions before you pay.</h2>
+        <span class="dia-anchor" style="left:22%;top:calc(100% + 90px)" data-scale="1.2"></span>
+      </div>
+      <div class="faq">
+        <details class="faq-item"><summary>I don’t have TON. Can I still pay?<span class="faq-ico"></span></summary><div class="faq-body"><p>You’ll need a small amount of TON in a wallet. Telegram has a built-in wallet where you can get it; the Mini App walks you through it.</p></div></details>
+        <details class="faq-item"><summary>Do I need to install an app?<span class="faq-ico"></span></summary><div class="faq-body"><p>No. Everything starts in the Telegram Mini App. Native apps are optional if you want the VPN on more devices.</p></div></details>
+        <details class="faq-item"><summary>How many devices can I use?<span class="faq-ico"></span></summary><div class="faq-body"><p>As many as you like. Every plan includes unlimited devices.</p></div></details>
+        <details class="faq-item"><summary>What’s the difference between plans?<span class="faq-ico"></span></summary><div class="faq-body"><p>Only the length. Every plan has the same protocols, locations and devices.</p></div></details>
+        <details class="faq-item"><summary>Where do I get help?<span class="faq-ico"></span></summary><div class="faq-body"><p>Write to the support bot in Telegram. It’s linked from the Mini App menu.</p></div></details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="cta" data-field="globe">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <span class="dia-anchor" style="left:50%;top:12%" data-scale="1.2"></span>
+      <p class="eyebrow">Ready when you are</p>
+      <h2 class="display cta-title split">Two taps to private.</h2>
+      <a class="btn btn-aurora btn-lg magnetic" href="#top"><span>Open in Telegram</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </section>
+  </main>
+
+  <footer class="footer" data-field="globe">
+    <div class="footer-top">
+      <a class="logo" href="#top" aria-label="Diamonds VPN home"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 3h12l4 6-10 12L2 9z" fill="none" stroke="url(#lg2)" stroke-width="1.6" stroke-linejoin="round"/><path d="M2 9h20M9 3l3 18 3-18" fill="none" stroke="url(#lg2)" stroke-width="1.1" stroke-linejoin="round" opacity=".7"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#CFF4FF"/><stop offset="1" stop-color="#3B4BFF"/></linearGradient></defs></svg><span>DIAMONDS</span></a>
+      <nav aria-label="Footer"><a href="#how">How it works</a><a href="#apps">Apps</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    </div>
+    <div class="footer-word" aria-hidden="true">DIAMONDS</div>
+    <span class="dia-anchor" style="left:50%;top:40%" data-scale="1.1"></span>
+    <p class="footer-note">Concept redesign by Oleksandr Chykhaiev, 2026. Not the live product — Diamonds VPN is no longer operating.</p>
+  </footer>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
