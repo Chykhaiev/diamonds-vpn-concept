@@ -8,6 +8,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { MeshSurfaceSampler } from 'three/addons/math/MeshSurfaceSampler.js';
 import { LAND_W, LAND_H, LAND_B64 } from './landmask.js';
 
+const prFor = (w, h, budget) => Math.max(0.5, Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(budget / Math.max(1, w * h))));
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 const easeInCubic = (t) => t * t * t;
@@ -52,7 +53,9 @@ export function initHero(canvas, { onReady, reducedMotion = false } = {}) {
   const R = isMobile ? 2.35 : 2.9;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  // render at a fixed pixel budget (~1080p worth) so 4K screens don't cost 4x
+  let budget = 2.4e6;
+  renderer.setPixelRatio(prFor(canvas.clientWidth, canvas.clientHeight, budget));
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
@@ -198,6 +201,8 @@ export function initHero(canvas, { onReady, reducedMotion = false } = {}) {
   // ---------- Resize ----------
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
+    const pr = prFor(w, h, budget);
+    renderer.setPixelRatio(pr); composer.setPixelRatio(pr); pMat.uniforms.uPx.value = pr;
     renderer.setSize(w, h, false); composer.setSize(w, h); bloom.setSize(w, h);
     camera.aspect = w / h;
     camera.position.z = w / h < 0.8 ? 17 : 13;
@@ -252,7 +257,7 @@ export function initHero(canvas, { onReady, reducedMotion = false } = {}) {
     if (!qLow && rawDt < 0.5) {
       qFrames++; if (rawDt > 0.026) qSlow++;
       if (qFrames >= 120) {
-        if (qSlow > 45 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); composer.setPixelRatio(1); resize(); qLow = true; }
+        if (qSlow > 45) { budget *= 0.55; resize(); if (budget < 0.7e6) qLow = true; }
         qFrames = qSlow = 0;
       }
     }

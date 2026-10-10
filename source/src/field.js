@@ -9,6 +9,7 @@ const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
 
+const prFor = (w, h, budget) => Math.max(0.5, Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(budget / Math.max(1, w * h))));
 export function initField({ reduced = false } = {}) {
   const canvas = document.createElement('canvas');
   canvas.className = 'bg-field';
@@ -18,7 +19,8 @@ export function initField({ reduced = false } = {}) {
   const mobile = window.innerWidth < 760;
   const N = mobile ? 1800 : 3600;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  let budget = 2.4e6;
+  renderer.setPixelRatio(prFor(window.innerWidth, window.innerHeight, budget));
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 1, 12000);
@@ -38,7 +40,7 @@ export function initField({ reduced = false } = {}) {
     uniforms: { uPx: { value: renderer.getPixelRatio() }, uCam: { value: 1 } },
     vertexShader: `attribute float alpha; attribute float size; varying float vA; varying vec3 vC; uniform float uPx; uniform float uCam;
       void main(){ vA = alpha; vC = color; vec4 mv = modelViewMatrix * vec4(position,1.0);
-        gl_PointSize = clamp(size * 1.6 * uPx * (uCam / -mv.z), 0.0, 22.0); gl_Position = projectionMatrix * mv; }`,
+        gl_PointSize = clamp(size * 1.6 * uPx * (uCam / -mv.z), 0.0, 15.0 * uPx); gl_Position = projectionMatrix * mv; }`,
     fragmentShader: `varying float vA; varying vec3 vC; void main(){ float d = length(gl_PointCoord-0.5); if(d>0.5) discard;
       float core = smoothstep(0.22, 0.0, d); float glow = smoothstep(0.5, 0.0, d) * 0.45;
       gl_FragColor = vec4(mix(vC, vec3(1.0), core * 0.35), (core + glow) * vA); }`,
@@ -202,6 +204,8 @@ export function initField({ reduced = false } = {}) {
 
   function resize() {
     W = window.innerWidth; H = window.innerHeight;
+    const pr = prFor(W, H, budget);
+    renderer.setPixelRatio(pr); mat.uniforms.uPx.value = pr;
     renderer.setSize(W, H, false);
     camera.aspect = W / H;
     camZ = (H / 2) / Math.tan(THREE.MathUtils.degToRad(15));
@@ -233,7 +237,7 @@ export function initField({ reduced = false } = {}) {
     if (!qLow && rawDt < 0.5) {
       qFrames++; if (rawDt > 0.026) qSlow++;
       if (qFrames >= 120) {
-        if (qSlow > 45 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); resize(); qLow = true; }
+        if (qSlow > 45) { budget *= 0.55; resize(); if (budget < 0.7e6) qLow = true; }
         qFrames = qSlow = 0;
       }
     }

@@ -7,6 +7,7 @@ import { diamondGeometry, makeGlowTexture } from './hero.js';
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 
+const prFor = (w, h, budget) => Math.max(0.5, Math.min(window.devicePixelRatio || 1, 1.5, Math.sqrt(budget / Math.max(1, w * h))));
 export function initRoamer({ getVelocity = () => 0 } = {}) {
   const canvas = document.createElement('canvas');
   canvas.className = 'roamer';
@@ -15,13 +16,15 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
 
   const mobile = () => window.innerWidth < 760;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  const budget = 2.4e6;
+  renderer.setPixelRatio(prFor(window.innerWidth, window.innerHeight, budget));
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 1, 6000);
   let W = 1, H = 1;
   function resize() {
     W = window.innerWidth; H = window.innerHeight;
+    renderer.setPixelRatio(prFor(W, H, budget));
     renderer.setSize(W, H, false);
     camera.aspect = W / H;
     camera.position.set(0, 0, (H / 2) / Math.tan(THREE.MathUtils.degToRad(15)));
@@ -205,6 +208,7 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
       }
     });
 
+    pMat.uniforms.uPx.value = renderer.getPixelRatio();
     renderer.render(scene, camera);
   }
   renderer.compile(scene, camera);
