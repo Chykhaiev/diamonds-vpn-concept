@@ -320,6 +320,7 @@ main, .footer { position: relative; z-index: 1; }
     radial-gradient(closest-side circle at 84% 26%, rgba(28, 21, 231, .22), transparent),
     radial-gradient(closest-side circle at 10% 78%, rgba(54, 186, 247, .10), transparent);
 }
+.stats::before { inset: 0; background: radial-gradient(closest-side circle at 84% 52%, rgba(28, 21, 231, .2), transparent), radial-gradient(closest-side circle at 10% 60%, rgba(54, 186, 247, .08), transparent); }
 #why::before { background: radial-gradient(closest-side circle at 12% 30%, rgba(0, 215, 192, .09), transparent), radial-gradient(closest-side circle at 88% 80%, rgba(28, 21, 231, .22), transparent); }
 #pricing::before { background: radial-gradient(closest-side at 50% 58%, rgba(59, 75, 255, .24), transparent); }
 #faq::before { background: radial-gradient(closest-side circle at 14% 45%, rgba(28, 21, 231, .2), transparent); }
