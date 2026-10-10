@@ -273,6 +273,8 @@ export function initField({ reduced = false } = {}) {
     geo.attributes.position.needsUpdate = true; geo.attributes.alpha.needsUpdate = true; geo.attributes.color.needsUpdate = true;
     renderer.render(scene, camera);
   }
+  // compile shaders now, so the first visible frame after the hero doesn't stall
+  renderer.compile(scene, camera); renderer.render(scene, camera);
   requestAnimationFrame(frame);
 
   return {

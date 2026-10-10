@@ -207,6 +207,7 @@ export function initRoamer({ getVelocity = () => 0 } = {}) {
 
     renderer.render(scene, camera);
   }
+  renderer.compile(scene, camera);
   requestAnimationFrame(frame);
 
   return { setHero(p) { heroP = p; }, burst };
